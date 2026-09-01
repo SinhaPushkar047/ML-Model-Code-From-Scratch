@@ -25,38 +25,16 @@ Simple Linear Regression is used when there is:
 
 The model is represented as:
 
-\[
-\hat{y} = b_0 + b_1x
-\]
+$$
+\hat{y} = c + mx
+$$
 
 Where:
 
-- `b₀` = intercept
-- `b₁` = weight/coefficient of the feature
+- `c` = intercept
+- `m` = weight/coefficient of the feature
 - `x` = input feature
 - `ŷ` = predicted value
-
-### Finding the parameters
-
-The slope can be calculated using:
-
-\[
-b_1 =
-\frac{\sum (x_i-\bar{x})(y_i-\bar{y})}
-{\sum (x_i-\bar{x})^2}
-\]
-
-The intercept is:
-
-\[
-b_0 = \bar{y} - b_1\bar{x}
-\]
-
-After calculating these values, predictions are made using:
-
-\[
-\hat{y}=b_0+b_1x
-\]
 
 ---
 
@@ -66,10 +44,10 @@ Multiple Linear Regression extends Simple Linear Regression to multiple independ
 
 For `n` features:
 
-\[
+$$
 \hat{y} =
 b_0+b_1x_1+b_2x_2+\dots+b_nx_n
-\]
+$$
 
 Here:
 
@@ -81,31 +59,31 @@ Here:
 
 The model can be represented as:
 
-\[
+$$
 \hat{y}=X\beta
-\]
+$$
 
 To include the intercept, a column of ones is added to `X`:
 
-\[
+$$
 X =
 \begin{bmatrix}
 1 & x_{11} & x_{12} & \dots & x_{1n}\\
 1 & x_{21} & x_{22} & \dots & x_{2n}\\
-\vdots & \vdots & \vdots & \ddots & \vdots\\
+\vdots & \vdots & \vdots & \vdots & \vdots\\
 1 & x_{m1} & x_{m2} & \dots & x_{mn}
 \end{bmatrix}
-\]
+$$
 
 The coefficients can be obtained using the **Normal Equation**:
 
-\[
+$$
 \beta = (X^TX)^{-1}X^Ty
-\]
+$$
 
 The resulting vector contains:
 
-\[
+$$
 \beta =
 \begin{bmatrix}
 b_0\\
@@ -114,7 +92,7 @@ b_2\\
 \vdots\\
 b_n
 \end{bmatrix}
-\]
+$$
 
 So the model's **weights can be directly obtained** from the coefficient vector.
 
@@ -124,24 +102,14 @@ So the model's **weights can be directly obtained** from the coefficient vector.
 
 The implementations can be evaluated using common regression metrics such as:
 
-### Mean Squared Error (MSE)
-
-\[
-MSE =
-\frac{1}{m}
-\sum_{i=1}^{m}(y_i-\hat{y}_i)^2
-\]
-
-Lower MSE indicates smaller average squared prediction error.
-
 ### R² Score
 
-\[
+$$
 R^2 =
 1-
 \frac{\sum(y_i-\hat{y}_i)^2}
 {\sum(y_i-\bar{y})^2}
-\]
+$$
 
 `R²` describes how much of the variation in the target variable is explained by the model.
 
@@ -172,56 +140,10 @@ Instead of treating `LinearRegression()` as a black box, this project focuses on
 - Python
 - NumPy
 - Pandas
-- Matplotlib *(if used for visualization)*
+- Matplotlib
+- Seaborn
 
 No machine-learning library is required for the core regression implementation.
-
----
-
-## 📁 Suggested Project Structure
-
-```text
-linear-regression-from-scratch/
-│
-├── simple_linear_regression.py
-├── multiple_linear_regression.py
-├── README.md
-└── dataset/
-    └── data.csv
-```
-
-Adjust the filenames and folders according to the actual project structure.
-
----
-
-## ▶️ How to Run
-
-### 1. Clone the repository
-
-```bash
-git clone <your-repository-url>
-cd linear-regression-from-scratch
-```
-
-### 2. Install dependencies
-
-```bash
-pip install numpy pandas matplotlib
-```
-
-### 3. Run the implementation
-
-```bash
-python simple_linear_regression.py
-```
-
-or
-
-```bash
-python multiple_linear_regression.py
-```
-
-If your implementations are notebooks, open the corresponding `.ipynb` files in Jupyter Notebook or Google Colab.
 
 ---
 
@@ -237,28 +159,6 @@ If your implementations are notebooks, open the corresponding `.ipynb` files in 
 
 ---
 
-## 💡 Key Learning
-
-One of the main concepts demonstrated in this project is that **linear regression learns a set of weights (coefficients)**.
-
-For example:
-
-```text
-b0 = 5.2
-b1 = 2.7
-b2 = -1.4
-```
-
-This means the learned model is:
-
-\[
-\hat{y}=5.2+2.7x_1-1.4x_2
-\]
-
-The coefficients tell us how the prediction changes with respect to each feature, assuming the other features remain fixed.
-
----
-
 ## 📚 Concepts Practiced
 
 - Simple Linear Regression
@@ -270,7 +170,6 @@ The coefficients tell us how the prediction changes with respect to each feature
 - Transpose
 - Matrix inverse
 - Predictions
-- Mean Squared Error
 - R² Score
 - Regression model interpretation
 
